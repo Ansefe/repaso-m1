@@ -22,13 +22,13 @@ describe('Tests Repaso!!', function () {
                 linkedList.add(100);
             });
 
-            it('getHead deberia devolver el primer elemento de la linked list', () => {
+            xit('getHead deberia devolver el primer elemento de la linked list', () => {
                 expect(linkedList.getHead()).to.equal(15);
             });
             it('getTail deberia devolver el ultimo elemento de la linked list', () => {
                 expect(linkedList.getTail()).to.equal(100);
             });
-            it('search deberia devolver la posicion del elemento de la linked list buscado', () => {
+            xit('search deberia devolver la posicion del elemento de la linked list buscado', () => {
                 expect(linkedList.search(30)).to.equal(1);
                 expect(linkedList.search(100)).to.equal(3);
                 expect(linkedList.search(15)).to.equal(0);
@@ -36,8 +36,8 @@ describe('Tests Repaso!!', function () {
         });
     });
 
-    xdescribe('Recursion', function () {
-        describe('EJERCICIO B', function () {
+    describe('Recursion', function () {
+        xdescribe('EJERCICIO B', function () {
             it('deberia devolver true si el numero es palidromo', () => {
                 expect(isPalindrome(555)).to.equal(true);
                 expect(isPalindrome(2002)).to.equal(true);
@@ -89,7 +89,7 @@ describe('Tests Repaso!!', function () {
         });
     });
 
-    xdescribe('Closures', function () {
+    describe('Closures', function () {
         describe('EJERCICIO D', function () {
             it('growUp deberia devolver el String correspondiente', () => {
                 expect(growUp()).to.equal('Pepe riene ahora 29 años');

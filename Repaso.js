@@ -28,11 +28,30 @@ const { Queue, LinkedList, BinarySearchTree } = require('./DataStructures.js');
 // search(value) ---> Devuelve la posicion del nodo con el valor recibido por parametro, contando desde 0.
 // myLinkedList.search(16) ---> devuelve 2.
 
-LinkedList.prototype.getHead = function () {};
+LinkedList.prototype.getHead = function () {
+    return this.head.value;
+};
 
-LinkedList.prototype.getTail = function () {};
+LinkedList.prototype.getTail = function () {
+    var current = this.head;
+    while(current.next){
+        current = current.next;
+    }
+    return current.value;
+};
 
-LinkedList.prototype.search = function (value) {};
+LinkedList.prototype.search = function (value) {
+    var current = this.head;
+    var pos = -1;
+    while(current){
+        pos++;
+        if(current.value===value){
+            break;
+        }
+        current = current.next;
+    }
+    return pos;
+};
 
 /*****************************************************************/
 /*************************** Recursion ***************************/
@@ -45,8 +64,17 @@ LinkedList.prototype.search = function (value) {};
 // Palindromo es una expresion que se lee igual de derecha a izquierda o viceversa.
 // Ejemplo de numeros palindromos: 1001, 252, 2001, 2222, 9889.
 
-function isPalindrome(number) {}
-
+function isPalindrome(number) {
+    if(number.toString().length<=2)return null;
+    else if(number<0)return null;
+    else if((number%1)!=0)return null;
+    const  arr = [];
+    for(var i=0; i<String(number).length; i++){
+        arr.unshift(number.toString()[i]);
+    }
+    if(arr.join('')==number)return true;
+    else return false;
+}
 /*****************************************************************/
 /*********************** Recursion y Stack ***********************/
 /*****************************************************************/
@@ -65,7 +93,14 @@ function isPalindrome(number) {}
 // 2
 // 1
 
-Queue.prototype.reverseStack = function () {};
+Queue.prototype.reverseStack = function () {
+    var elim = this.dequeue();
+    if (this.size()>0){
+        this.reverseStack();
+    }
+    this.enqueue(elim);
+    return this.array;
+};
 
 /*****************************************************************/
 /**************************** Closures ***************************/
@@ -80,7 +115,14 @@ Queue.prototype.reverseStack = function () {};
 // Si vuelvo a llamar a growUp(), deberia devolver "Pepe tiene ahora 30 años."
 // Y asi consecutivamente...
 
-function growUp() {}
+function growUpCreator() {
+    var edad = 28;
+    return function(){
+        edad++;
+        return "Pepe riene ahora " + edad + " años";
+    }
+}
+growUp = new growUpCreator();
 
 /*****************************************************************/
 /****************************** BST ******************************/
